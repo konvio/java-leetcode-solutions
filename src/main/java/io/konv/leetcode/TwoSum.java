@@ -14,16 +14,14 @@ public class TwoSum {
      * You may assume that each input would have exactly one solution, and you may not use the same element twice.
      */
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> hashMap = new HashMap<>();
-        int[] res = new int[2];
+        Map<Integer, Integer> indexMap = new HashMap<>();
         for (int i = 0; i < nums.length; ++i) {
-            if (hashMap.containsKey(target - nums[i])) {
-                res[0] = hashMap.get(target - nums[i]);
-                res[1] = i;
-                return res;
+            if (indexMap.containsKey(target - nums[i])) {
+                int matchingIndex = indexMap.get(target - nums[i]);
+                return new int[]{matchingIndex, i};
             }
-            hashMap.put(nums[i], i);
+            indexMap.put(nums[i], i);
         }
-        return res;
+        return null;
     }
 }
